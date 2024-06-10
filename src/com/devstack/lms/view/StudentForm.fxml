@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #CAD3C8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devstack.lms.controller.StudentFormController">
+<AnchorPane fx:id="context" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #CAD3C8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devstack.lms.controller.StudentFormController">
    <children>
       <Label layoutX="12.0" layoutY="9.0" text="Student Form" textFill="#182c61">
          <font>
@@ -17,11 +17,11 @@
          </font>
       </Label>
       <Separator layoutX="7.0" layoutY="57.0" prefHeight="3.0" prefWidth="877.0" />
-      <Button layoutX="757.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: black;" text="New Student" textFill="WHITE">
+      <Button layoutX="757.0" layoutY="12.0" mnemonicParsing="false" onAction="#btnNewStudentOnAction" style="-fx-background-color: black;" text="New Student" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font></Button>
-      <Button layoutX="612.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: #1B9CFC;" text="Back to Home">
+      <Button layoutX="612.0" layoutY="12.0" mnemonicParsing="false" onAction="#backToHomeOnAction" style="-fx-background-color: #1B9CFC;" text="Back to Home">
          <font>
             <Font name="System Bold" size="17.0" />
          </font></Button>
@@ -29,7 +29,7 @@
       <TextField fx:id="txtAddress" layoutX="259.0" layoutY="78.0" prefHeight="31.0" prefWidth="221.0" promptText="Address" />
       <TextField fx:id="txtAge" layoutX="494.0" layoutY="78.0" prefHeight="31.0" prefWidth="66.0" promptText="Age" />
       <TextField fx:id="txtEmail" layoutX="580.0" layoutY="78.0" prefHeight="31.0" prefWidth="306.0" promptText="Email" />
-      <Button layoutX="728.0" layoutY="127.0" mnemonicParsing="false" onAction="#saveStudentOnAction" prefHeight="38.0" prefWidth="158.0" style="-fx-background-color: #FEA47F;" text="Save Student">
+      <Button fx:id="btnSave" layoutX="728.0" layoutY="127.0" mnemonicParsing="false" onAction="#saveStudentOnAction" prefHeight="38.0" prefWidth="158.0" style="-fx-background-color: #FEA47F;" text="Save Student">
          <font>
             <Font name="System Bold" size="17.0" />
          </font></Button>
