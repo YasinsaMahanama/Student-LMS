@@ -34,7 +34,7 @@
             <Font name="System Bold" size="17.0" />
          </font></Button>
       <Separator layoutX="12.0" layoutY="165.0" prefHeight="3.0" prefWidth="877.0" />
-      <TextField layoutX=" 7.0" layoutY="186.0" prefHeight="34.0" prefWidth="884.0" promptText="Search here" />
+      <TextField fx:id="txtSearch" layoutX=" 7.0" layoutY="186.0" prefHeight="34.0" prefWidth="884.0" promptText="Search here" />
       <TableView fx:id="tblStudents" layoutX="7.0" layoutY="233.0" prefHeight="361.0" prefWidth="884.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="174.0" text="Name" />

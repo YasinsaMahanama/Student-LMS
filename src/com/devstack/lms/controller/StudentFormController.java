@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Observable;
+import java.util.Optional;
 import java.util.UUID;
 
 public class StudentFormController {
@@ -25,6 +26,7 @@ public class StudentFormController {
     public TableColumn<StudentTM, Integer> colAge;
     public TableColumn<StudentTM, String> colEmail;
     public TableColumn<StudentTM, ButtonBar> colOption;
+    public TextField txtSearch;
 
     private String searchText = "";
 
@@ -34,7 +36,13 @@ public class StudentFormController {
         colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("bar"));
+
         loadAllStudents();
+
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            searchText = newValue;
+            loadAllStudents();
+        });
     }
 
     private void loadAllStudents() {
@@ -60,6 +68,30 @@ public class StudentFormController {
                         student.getAge(),
                         bar
                 );
+
+                deleteButton.setOnAction(event -> {
+
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+
+                    Optional<ButtonType> buttonType = alert.showAndWait();
+                    if (buttonType.get() == ButtonType.YES) {
+                        try {
+                            DatabaseAccessCode dbAccessCode = new DatabaseAccessCode();
+                            boolean isDeleted = dbAccessCode.deleteStudent(studentTM.getStudentId());
+
+                            if (isDeleted) {
+                                new Alert(Alert.AlertType.INFORMATION, "Student deleted successfully").show();
+                                loadAllStudents();
+                            } else {
+                                new Alert(Alert.AlertType.WARNING, "Something Went Wrong and try again.").show();
+                            }
+
+                        } catch (SQLException | ClassNotFoundException e) {
+                            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.CLOSE).show();
+                        }
+                    }
+                });
+
                 tmObservableList.add(studentTM);
             }
             tblStudents.setItems(tmObservableList);
