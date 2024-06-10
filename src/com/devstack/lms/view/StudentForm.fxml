@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devstack.lms.controller.StudentFormController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #CAD3C8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devstack.lms.controller.StudentFormController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" text="Student Form">
+      <Label layoutX="12.0" layoutY="9.0" text="Student Form" textFill="#182c61">
          <font>
-            <Font name="System Bold" size="23.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
       <Separator layoutX="7.0" layoutY="57.0" prefHeight="3.0" prefWidth="877.0" />
@@ -34,14 +34,14 @@
             <Font name="System Bold" size="17.0" />
          </font></Button>
       <Separator layoutX="12.0" layoutY="165.0" prefHeight="3.0" prefWidth="877.0" />
-      <TextField layoutX="7.0" layoutY="186.0" prefHeight="34.0" prefWidth="884.0" promptText="Search here" />
-      <TableView layoutX="7.0" layoutY="233.0" prefHeight="361.0" prefWidth="884.0">
+      <TextField layoutX=" 7.0" layoutY="186.0" prefHeight="34.0" prefWidth="884.0" promptText="Search here" />
+      <TableView fx:id="tblStudents" layoutX="7.0" layoutY="233.0" prefHeight="361.0" prefWidth="884.0">
         <columns>
-          <TableColumn prefWidth="174.0" text="Name" />
-          <TableColumn prefWidth="174.0" text="Address" />
-            <TableColumn prefWidth="93.0" text="Age" />
-            <TableColumn prefWidth="288.0" text="Email" />
-            <TableColumn prefWidth="154.0" text="Option" />
+          <TableColumn fx:id="colName" prefWidth="174.0" text="Name" />
+          <TableColumn fx:id="colAddress" prefWidth="174.0" text="Address" />
+            <TableColumn fx:id="colAge" prefWidth="93.0" text="Age" />
+            <TableColumn fx:id="colEmail" prefWidth="192.0" text="Email" />
+            <TableColumn fx:id="colOption" prefWidth="250.0" text="Option" />
         </columns>
       </TableView>
    </children>
