@@ -13,10 +13,13 @@ public class DashboardFormController {
     public AnchorPane context;
 
     public void btnOpenStudentFormOnAction(ActionEvent actionEvent) throws IOException {
-        URL resource = getClass().getResource("../view/StudentForm.fxml");
+        setUi("StudentForm");
+    }
+
+    public void setUi(String location) throws IOException {
         Stage stage = (Stage) context.getScene().getWindow();
-        stage.setScene((new Scene(FXMLLoader.load(resource))));
-        stage.setTitle("Student Form");
+        stage.setScene((new Scene(FXMLLoader.load(getClass().getResource("../view/" + location + ".fxml")))));
+        stage.setTitle(location);
         stage.centerOnScreen();
     }
 }

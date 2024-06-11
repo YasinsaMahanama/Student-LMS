@@ -191,10 +191,13 @@ public class StudentFormController {
     }
 
     public void backToHomeOnAction(ActionEvent actionEvent) throws IOException {
-        URL resource = getClass().getResource("../view/DashboardForm.fxml");
+        setUi("DashboardForm");
+    }
+
+    public void setUi(String location) throws IOException {
         Stage stage = (Stage) context.getScene().getWindow();
-        stage.setScene((new Scene(FXMLLoader.load(resource))));
-        stage.setTitle("Dashboard Form");
+        stage.setScene((new Scene(FXMLLoader.load(getClass().getResource("../view/" + location + ".fxml")))));
+        stage.setTitle(location);
         stage.centerOnScreen();
     }
 }

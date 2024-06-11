@@ -35,11 +35,7 @@ public class SignUpFormController {
 
             if (isSignedUp){
                 new Alert(Alert.AlertType.INFORMATION, "Successfully Signed Up").show();
-                URL resource = getClass().getResource("../view/LogInForm.fxml");
-                Stage stage = (Stage) context.getScene().getWindow();
-                stage.setScene((new Scene(FXMLLoader.load(resource))));
-                stage.setTitle("Log In Form");
-                stage.centerOnScreen();
+                setUi("LogInForm");
             }
             else {
                 new Alert(Alert.AlertType.ERROR, "Something Went Wrong").show();
@@ -53,10 +49,13 @@ public class SignUpFormController {
     }
 
     public void navigateToLogInFormOnAction(ActionEvent actionEvent) throws IOException {
-        URL resource = getClass().getResource("../view/LogInForm.fxml");
+        setUi("LogInForm");
+    }
+
+    public void setUi(String location) throws IOException {
         Stage stage = (Stage) context.getScene().getWindow();
-        stage.setScene((new Scene(FXMLLoader.load(resource))));
-        stage.setTitle("Log In Form");
+        stage.setScene((new Scene(FXMLLoader.load(getClass().getResource("../view/" + location + ".fxml")))));
+        stage.setTitle(location);
         stage.centerOnScreen();
     }
 }
