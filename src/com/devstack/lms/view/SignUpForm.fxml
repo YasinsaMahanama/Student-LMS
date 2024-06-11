@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="context" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CAD3C8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devstack.lms.controller.SignUpFormController">
+   <children>
+      <Button layoutX="119.0" layoutY="391.0" mnemonicParsing="false" onAction="#createAnAccountOnAction" prefHeight="44.0" prefWidth="187.0" style="-fx-background-color: #1B9CFC;" text="Sign Up" textFill="#282a2c">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="37.0" layoutY="49.0" text="Sign Up" textFill="#182c61">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="776.0" fitWidth="565.0" layoutX="399.0" layoutY="-6.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/SignUp.PNG" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtUserName" layoutX="28.0" layoutY="177.0" prefHeight="44.0" prefWidth="350.0" promptText="Username">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="txtPassword" layoutX="28.0" layoutY="263.0" prefHeight="44.0" prefWidth="350.0" promptText="Password">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </PasswordField>
+      <Label layoutX="37.0" layoutY="532.0" text="Already Have an Account , ">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="158.0" layoutY="568.0" onAction="#navigateToLogInFormOnAction" text="Log In" textFill="#1b9cfc" underline="true">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Hyperlink>
+   </children>
+</AnchorPane>

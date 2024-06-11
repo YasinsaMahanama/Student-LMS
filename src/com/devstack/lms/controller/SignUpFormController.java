@@ -11,25 +11,25 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-public class LoginFormController {
+public class SignUpFormController {
 
-    public AnchorPane context;
     public TextField txtUserName;
     public PasswordField txtPassword;
+    public AnchorPane context;
 
-    public void OpenDashboardOnAction(ActionEvent actionEvent) throws IOException {
-        URL resource = getClass().getResource("../view/DashboardForm.fxml");
+    public void createAnAccountOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/LogInForm.fxml");
         Stage stage = (Stage) context.getScene().getWindow();
         stage.setScene((new Scene(FXMLLoader.load(resource))));
-        stage.setTitle("Dashboard");
+        stage.setTitle("Log In Form");
         stage.centerOnScreen();
     }
 
-    public void navigateToRegisterFormOnAction(ActionEvent actionEvent) throws IOException {
-        URL resource = getClass().getResource("../view/SignUpForm.fxml");
+    public void navigateToLogInFormOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/LogInForm.fxml");
         Stage stage = (Stage) context.getScene().getWindow();
         stage.setScene((new Scene(FXMLLoader.load(resource))));
-        stage.setTitle("Register Form");
+        stage.setTitle("Log In Form");
         stage.centerOnScreen();
     }
 }

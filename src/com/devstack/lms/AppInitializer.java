@@ -1,3 +1,5 @@
+package com.devstack.lms;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,13 +10,14 @@ import java.io.IOException;
 public class AppInitializer extends Application {
 
     public static void main(String[] args) {
-         launch(args);
+        launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("com/devstack/lms/view/LoginForm.fxml"))));
+        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("./view/LoginForm.fxml"))));
         primaryStage.setTitle("Login Form");
         primaryStage.show();
     }
 }
+

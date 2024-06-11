@@ -1,6 +1,6 @@
 package com.devstack.lms.db;
 
-import com.devstack.lms.model.Student;
+import com.devstack.lms.entity.Student;
 
 import java.sql.*;
 import java.util.ArrayList;
