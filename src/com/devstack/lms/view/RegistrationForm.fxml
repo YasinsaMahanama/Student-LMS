@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="context" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #CAD3C8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devstack.lms.controller.RegistrationFormController">
+   <children>
+      <Separator layoutX="21.0" layoutY="82.0" prefHeight="3.0" prefWidth="852.0" />
+      <Button layoutX="736.0" layoutY="23.0" mnemonicParsing="false" onAction="#backToHomeOnAction" prefHeight="38.0" prefWidth="138.0" style="-fx-background-color: #1B9CFC;" text="Back to Home">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtStudentName" layoutX="263.0" layoutY="262.0" prefHeight="38.0" prefWidth="263.0" promptText="Student Name" />
+      <Label layoutX="24.0" layoutY="19.0" text="Registration Form" textFill="#182c61">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCourseName" layoutX="263.0" layoutY="110.0" prefHeight="38.0" prefWidth="263.0" promptText="Course Name" />
+      <TextField fx:id="txtStudentEmail" layoutX="581.0" layoutY="262.0" prefHeight="38.0" prefWidth="289.0" promptText="Student Email" />
+      <TextField fx:id="txtCourseFee" layoutX="577.0" layoutY="110.0" prefHeight="38.0" prefWidth="297.0" promptText="Course Fee" />
+      <Button fx:id="btnSave" layoutX="24.0" layoutY="442.0" mnemonicParsing="false" onAction="#registerNowOnAction" prefHeight="38.0" prefWidth="158.0" style="-fx-background-color: #FEA47F;" text="Register Now">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <Separator layoutX="24.0" layoutY="415.0" prefHeight="3.0" prefWidth="844.0" />
+      <ComboBox fx:id="cmbCourse" layoutX="24.0" layoutY="110.0" prefHeight="38.0" prefWidth="193.0" promptText="Course" />
+      <ComboBox fx:id="cmbStudent" layoutX="24.0" layoutY="262.0" prefHeight="38.0" prefWidth="193.0" promptText="Student" />
+      <RadioButton fx:id="rBtnCash" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" selected="true" text="Cash">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="paymentType" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="142.0" layoutY="353.0" mnemonicParsing="false" text="Card" toggleGroup="$paymentType">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </RadioButton>
+   </children>
+</AnchorPane>

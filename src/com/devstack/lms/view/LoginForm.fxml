@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="context" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #CAD3C8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devstack.lms.controller.LoginFormController">
    <children>
-      <Button layoutX="109.0" layoutY="381.0" mnemonicParsing="false" onAction="#OpenDashboardOnAction" prefHeight="44.0" prefWidth="187.0" style="-fx-background-color: #1B9CFC;" text="Log in" textFill="#282a2c">
+      <Button layoutX="94.0" layoutY="339.0" mnemonicParsing="false" onAction="#OpenDashboardOnAction" prefHeight="44.0" prefWidth="187.0" style="-fx-background-color: #1B9CFC;" text="Log in" textFill="#282a2c">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -22,32 +22,32 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <ImageView fitHeight="776.0" fitWidth="565.0" layoutX="401.0" layoutY="-7.0" pickOnBounds="true">
+      <ImageView fitHeight="616.0" fitWidth="516.0" layoutX="385.0" pickOnBounds="true">
          <image>
             <Image url="@../assets/LogIn.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtUserName" layoutX="27.0" layoutY="166.0" prefHeight="44.0" prefWidth="350.0" promptText="Username">
+      <TextField fx:id="txtUserName" layoutX="27.0" layoutY="144.0" prefHeight="44.0" prefWidth="327.0" promptText="Username">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="txtPassword" layoutX="27.0" layoutY="253.0" prefHeight="44.0" prefWidth="350.0" promptText="Password">
+      <PasswordField fx:id="txtPassword" layoutX="27.0" layoutY="227.0" prefHeight="44.0" prefWidth="327.0" promptText="Password">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </PasswordField>
-      <Label layoutX="27.0" layoutY="522.0" text="Create an Account , ">
+      <Label layoutX="27.0" layoutY="458.0" text="Create an Account , ">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="230.0" layoutY="307.0" text="Forget Password ?" textFill="#1b9cfc" underline="true">
+      <Hyperlink layoutX="208.0" layoutY="275.0" text="Forget Password ?" textFill="#1b9cfc" underline="true">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Hyperlink>
-      <Hyperlink layoutX="148.0" layoutY="558.0" onAction="#navigateToRegisterFormOnAction" text="Sign Up" textFill="#1b9cfc" underline="true">
+      <Hyperlink layoutX="133.0" layoutY="501.0" onAction="#navigateToRegisterFormOnAction" text="Sign Up" textFill="#1b9cfc" underline="true">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
