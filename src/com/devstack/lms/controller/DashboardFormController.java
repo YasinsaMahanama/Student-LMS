@@ -22,4 +22,8 @@ public class DashboardFormController {
         stage.setTitle(location);
         stage.centerOnScreen();
     }
+
+    public void btnOpenCourseFormOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("CourseForm");
+    }
 }
