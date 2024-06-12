@@ -65,15 +65,15 @@ public class RegistrationFormController {
     }
 
     private void loadAllStudent() {
-        ObservableList<String> cmbObservableList = null;
+        ObservableList<String> studentObservableList = null;
 
 //        clearField();
 
         try{
 
             DatabaseAccessCode db = new DatabaseAccessCode();
-            cmbObservableList = FXCollections.observableArrayList(db.findAllStudents().stream().map(e->e.getStudentId()+" | "+e.getStudentName()).collect(Collectors.toList()));
-            cmbStudent.setItems(cmbObservableList);
+            studentObservableList = FXCollections.observableArrayList(db.findAllStudents().stream().map(e->e.getStudentId()+" | "+e.getStudentName()).collect(Collectors.toList()));
+            cmbStudent.setItems(studentObservableList);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -105,15 +105,15 @@ public class RegistrationFormController {
 
     private void loadAllCourse() {
 
-        ObservableList<String> cmbObservableList = null;
+        ObservableList<String> courseObservableList = null;
 
 //        clearField();
 
         try{
 
             DatabaseAccessCode db = new DatabaseAccessCode();
-            cmbObservableList = FXCollections.observableArrayList(db.findAllCourse().stream().map(e->e.getCourseId()+" | "+e.getCourseName()).collect(Collectors.toList()));
-            cmbCourse.setItems(cmbObservableList);
+            courseObservableList = FXCollections.observableArrayList(db.findAllCourse().stream().map(e->e.getCourseId()+" | "+e.getCourseName()).collect(Collectors.toList()));
+            cmbCourse.setItems(courseObservableList);
 
         }catch (Exception e){
             e.printStackTrace();
