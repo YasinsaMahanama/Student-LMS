@@ -1,6 +1,7 @@
 package com.devstack.lms.db;
 
 import com.devstack.lms.entity.Course;
+import com.devstack.lms.entity.Registration;
 import com.devstack.lms.entity.Student;
 import com.devstack.lms.entity.User;
 
@@ -294,6 +295,30 @@ public class DatabaseAccessCode {
         return null;
     }
 
+    public boolean registerCourse(Registration registration) throws ClassNotFoundException, SQLException {
+       // Class.forName("com.mysql.cj.jdbc.Driver");
+        //Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+
+
+        String sql = "INSERT INTO registration values(?,?,?,?,?,?)";
+
+        //PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setString(1, registration.getRegistrationId());
+        preparedStatement.setObject(2, registration.getRegisteredDate());
+        preparedStatement.setObject(3, registration.getNic());
+        preparedStatement.setString(4, registration.getPaymentType().name());
+        preparedStatement.setString(5, registration.getStudent());
+        preparedStatement.setString(6, registration.getCourse());
+
+        return preparedStatement.executeUpdate()>0;
+
+        //me code eka simple krla thyenne anith ewa simple krla na. connection eka wenama class ekaka hdgena mekta aragen.
+        //if dala anith ewage ghpu eka meke return dala thani peliykta aragena
+
+    }
 
     //Registration Management........
 
