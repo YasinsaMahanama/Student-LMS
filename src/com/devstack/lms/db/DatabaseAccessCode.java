@@ -1,9 +1,7 @@
 package com.devstack.lms.db;
 
-import com.devstack.lms.entity.Course;
-import com.devstack.lms.entity.Registration;
-import com.devstack.lms.entity.Student;
-import com.devstack.lms.entity.User;
+import com.devstack.lms.entity.*;
+import com.devstack.lms.utill.PaymentType;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -321,5 +319,33 @@ public class DatabaseAccessCode {
     }
 
     //Registration Management........
+
+
+    //AllRegistration Management
+
+    public List<AllRegistration> loadAllDetails(String courseId) throws ClassNotFoundException, SQLException {
+        String sql = "SELECT r.registered_date, s.student_name, r.paymentType " +
+                "FROM registration r " +
+                "JOIN student s ON r.student = s.student_id " +
+                "WHERE r.course = ?";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        preparedStatement.setString(1, courseId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<AllRegistration> registrationList = new ArrayList<>();
+        while (resultSet.next()) {
+            registrationList.add(new AllRegistration(
+                    resultSet.getDate(1),
+                    resultSet.getString(2),
+                    PaymentType.valueOf(resultSet.getString(3))
+            ));
+        }
+        return registrationList;
+    }
+
+
+
+    //AllRegistration Management
+
 
 }

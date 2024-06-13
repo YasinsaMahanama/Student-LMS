@@ -1,18 +1,18 @@
-package com.devstack.lms.view.tm;
+package com.devstack.lms.entity;
 
 import com.devstack.lms.utill.PaymentType;
 
 import java.util.Date;
 
-public class AllRegistrationTM {
+public class AllRegistration {
     private Date date;
     private String studentName;
     private PaymentType paymentType;
 
-    public AllRegistrationTM() {
+    public AllRegistration(Object object, String string, Object resultSetObject) {
     }
 
-    public AllRegistrationTM(Date date, String studentName, PaymentType paymentType) {
+    public AllRegistration(Date date, String studentName, PaymentType paymentType) {
         this.date = date;
         this.studentName = studentName;
         this.paymentType = paymentType;

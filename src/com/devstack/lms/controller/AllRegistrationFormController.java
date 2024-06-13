@@ -1,34 +1,39 @@
 package com.devstack.lms.controller;
 
 import com.devstack.lms.db.DatabaseAccessCode;
+import com.devstack.lms.entity.AllRegistration;
 import com.devstack.lms.entity.Course;
-import com.devstack.lms.entity.Student;
-import com.devstack.lms.view.tm.AllRegistrationTM;
-import com.devstack.lms.view.tm.StudentTM;
+import com.devstack.lms.utill.PaymentType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class AllRegistrationFormController {
 
     public ComboBox<String> cmbCourse;
-    public TableView<AllRegistrationTM> tblAllRegistration;
+    public TableView<AllRegistration> tblAllRegistration;
+    public TableColumn<AllRegistration, Date> colDate;
+    public TableColumn<AllRegistration, String> colStudentName;
+    public TableColumn<AllRegistration, PaymentType> colPaymentType;
     public AnchorPane context;
 
     private Course selectedCourse;
 
     public void initialize() {
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colStudentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
+        colPaymentType.setCellValueFactory(new PropertyValueFactory<>("paymentType"));
         loadAllCourse();
 
         cmbCourse.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -36,7 +41,6 @@ public class AllRegistrationFormController {
                 setCourseDetails((String) newValue);
             }
         });
-
     }
 
     private void loadAllCourse() {
@@ -63,53 +67,26 @@ public class AllRegistrationFormController {
         try{
             DatabaseAccessCode databaseAccessCode = new DatabaseAccessCode();
             selectedCourse = databaseAccessCode.findCourse(courseId);
-
             if(selectedCourse == null) {
                 new Alert(Alert.AlertType.WARNING, "Course Not Found", ButtonType.OK).show();
                 return;
             }
 
-            //loadAllCourses();
+            List<AllRegistration> registrations = databaseAccessCode.loadAllDetails(courseId);
+            ObservableList<AllRegistration> tmObservableList = FXCollections.observableArrayList(registrations);
+
+            if (tmObservableList.isEmpty()) {
+                new Alert(Alert.AlertType.WARNING, "Students are not registered for this course", ButtonType.OK).show();
+                tblAllRegistration.setItems(FXCollections.observableArrayList());
+            }
+
+            tblAllRegistration.setItems(tmObservableList);
 
         }catch (Exception e){
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
-
-//    private void loadAllCourses() {
-//
-//        ObservableList<AllRegistrationTM> tmObservableList = FXCollections.observableArrayList();
-//
-//        try {
-//            DatabaseAccessCode databaseAccessCode = new DatabaseAccessCode();
-//
-//            List<Student> allStudents = databaseAccessCode.findAllSelectedCourse();
-//
-//            for(Student student : allStudents) {
-//                ButtonBar bar = new ButtonBar();
-//                Button deleteButton = new Button("Delete");
-//                Button updateButton = new Button("Update");
-//                bar.getButtons().addAll(deleteButton, updateButton);
-//
-//                AllRegistrationTM allRegistrationTM = new AllRegistrationTM(
-//                        student.getStudentId(),
-//                        student.getStudentName(),
-//                        student.getAddress(),
-//                        student.getEmail(),
-//                        student.getAge(),
-//                        bar
-//                );
-//
-//                tmObservableList.add(AllRegistrationTM);
-//            }
-//            tblAllRegistration.setItems(tmObservableList);
-//
-//        }catch (SQLException | ClassNotFoundException e) {
-//            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.CLOSE).show();
-//        }
-//    }
-
 
 
     public void backToHomeOnAction(ActionEvent actionEvent) throws IOException {
