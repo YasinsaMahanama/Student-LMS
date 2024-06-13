@@ -31,7 +31,7 @@ public class DashboardFormController {
         setUi("RegistrationForm");
     }
 
-    public void btnOpenAllRegistrationFormOnAction(ActionEvent actionEvent) {
-
+    public void btnOpenAllRegistrationFormOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("AllRegistrationForm");
     }
 }
