@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="context" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #CAD3C8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devstack.lms.controller.RegistrationDetailsFormController">
    <children>
       <Label layoutX="29.0" layoutY="14.0" text="Student Details" textFill="#182c61">
@@ -22,7 +21,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="32.0" layoutY="323.0" text="Registration Details" textFill="#182c61">
+      <Label fx:id="label" layoutX="32.0" layoutY="323.0" text="Registration Details" textFill="#182c61">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>

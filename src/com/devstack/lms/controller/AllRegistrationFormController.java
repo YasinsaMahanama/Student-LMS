@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,6 +28,7 @@ public class AllRegistrationFormController {
     public TableColumn<AllRegistration, String> colStudentName;
     public TableColumn<AllRegistration, PaymentType> colPaymentType;
     public AnchorPane context;
+    public TextField txtCourseName;
 
     private Course selectedCourse;
 
@@ -41,6 +43,29 @@ public class AllRegistrationFormController {
                 setCourseDetails((String) newValue);
             }
         });
+
+        tblAllRegistration.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                showRegistrationDetailForm(newSelection);
+            }
+        });
+    }
+
+    private void showRegistrationDetailForm(AllRegistration newSelection) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/RegistrationDetailsForm.fxml"));
+            Parent root = loader.load();
+
+//            RegistrationDetailFormController controller = loader.getController();
+//            controller.initData(registration);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Registration Detail");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadAllCourse() {
@@ -100,10 +125,4 @@ public class AllRegistrationFormController {
         stage.centerOnScreen();
     }
 
-    private void clearFields(){
-
-        cmbCourse.setValue(null);
-
-        selectedCourse = null;
-    }
 }
