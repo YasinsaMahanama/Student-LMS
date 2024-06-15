@@ -46,12 +46,12 @@ public class AllRegistrationFormController {
 
         tblAllRegistration.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                showRegistrationDetailForm(newSelection);
+                openRegistrationDetailForm(newSelection);
             }
         });
     }
 
-    private void showRegistrationDetailForm(AllRegistration newSelection) {
+    private void openRegistrationDetailForm(AllRegistration newSelection) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/RegistrationDetailsForm.fxml"));
             Parent root = loader.load();

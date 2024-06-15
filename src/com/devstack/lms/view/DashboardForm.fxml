@@ -38,5 +38,10 @@
             </Button>
          </children>
       </AnchorPane>
+      <Button layoutX="735.0" layoutY="25.0" mnemonicParsing="false" onAction="#logOutOnAction" prefHeight="38.0" prefWidth="135.0" style="-fx-background-color: #1B9CFC;" text="Log Out">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package com.devstack.lms.controller;
 
 import com.devstack.lms.entity.AllRegistration;
+import com.devstack.lms.entity.RegisterDetails;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +33,17 @@ public class RegistrationDetailsFormController {
 //
 //        label.setText("Registration details for: " + registration.getStudentName());
 //    }
+
+    public void initData(RegisterDetails registerDetails) {
+        txtStudentName.setText(registerDetails.getStudentName());
+        txtAddress.setText(registerDetails.getAddress());
+        txtAge.setText(String.valueOf(registerDetails.getAge()));
+        txtEmail.setText(registerDetails.getEmail());
+        txtCourseName.setText(registerDetails.getCustomerName());
+        txtFee.setText(String.valueOf(registerDetails.getCourseFee()));
+        txtDate.setText(registerDetails.getRegisteredDate().toString());
+        txtPaymentType.setText(registerDetails.getPaymentType().toString());
+    }
 
     public void backToHomeOnAction(ActionEvent actionEvent) throws IOException {
         setUi("DashboardForm");

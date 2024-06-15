@@ -11,88 +11,89 @@ public class DatabaseAccessCode {
 
     //Student Management..........
 
-    public boolean saveStudent(Student student) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
-        String sql = "INSERT INTO student values(?,?,?,?,?)";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, student.getStudentId());
-        preparedStatement.setString(2, student.getStudentName());
-        preparedStatement.setString(3, student.getAddress());
-        preparedStatement.setInt(4, student.getAge());
-        preparedStatement.setString(5, student.getEmail());
-
-        int affectedRowCount = preparedStatement.executeUpdate();
-
-        if (affectedRowCount > 0) {
-            return true;
-        }
-        return false;
-    }
-
-    public List<Student> findAllStudents(String searchText) throws ClassNotFoundException, SQLException {
-        searchText = "%" + searchText + "%";
-
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
-        String sql = "SELECT * FROM student WHERE student_name LIKE ? OR email LIKE ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, searchText);
-        preparedStatement.setString(2, searchText);
-
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        List<Student> studentList = new ArrayList<>();
-
-        while (resultSet.next()) {
-            studentList.add(new Student(
-               resultSet.getString(1), resultSet.getString(2),resultSet.getString(3), resultSet.getString(5), resultSet.getInt(4)
-            ));
-        }
-        return studentList;
-    }
-
-    public boolean deleteStudent(String id) throws ClassNotFoundException, SQLException {
-
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
-        String sql = "DELETE FROM student WHERE student_id = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, id);
-
-        int affectedRowCount = preparedStatement.executeUpdate();
-
-        if (affectedRowCount > 0) {
-            return true;
-        }
-        return false;
-
-    }
-
-    public boolean updateStudent(Student student) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
-        String sql = "UPDATE student SET student_name = ?,address = ?, email = ?, age = ? WHERE student_id = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-        preparedStatement.setString(1, student.getStudentName());
-        preparedStatement.setString(2, student.getAddress());
-        preparedStatement.setString(3, student.getEmail());
-        preparedStatement.setInt(4, student.getAge());
-        preparedStatement.setString(5, student.getStudentId());
-
-        int affectedRowCount = preparedStatement.executeUpdate();
-
-        if (affectedRowCount > 0) {
-            return true;
-        }
-        return false;
-    }
+//    public boolean saveStudent(Student student) throws ClassNotFoundException, SQLException {
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+//        String sql = "INSERT INTO student values(?,?,?,?,?)";
+//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//        preparedStatement.setString(1, student.getStudentId());
+//        preparedStatement.setString(2, student.getStudentName());
+//        preparedStatement.setString(3, student.getAddress());
+//        preparedStatement.setInt(4, student.getAge());
+//        preparedStatement.setString(5, student.getEmail());
+//
+//        int affectedRowCount = preparedStatement.executeUpdate();
+//
+//        if (affectedRowCount > 0) {
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    public List<Student> findAllStudents(String searchText) throws ClassNotFoundException, SQLException {
+//        searchText = "%" + searchText + "%";
+//
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+//        String sql = "SELECT * FROM student WHERE student_name LIKE ? OR email LIKE ?";
+//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//        preparedStatement.setString(1, searchText);
+//        preparedStatement.setString(2, searchText);
+//
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        List<Student> studentList = new ArrayList<>();
+//
+//        while (resultSet.next()) {
+//            studentList.add(new Student(
+//               resultSet.getString(1), resultSet.getString(2),resultSet.getString(3), resultSet.getString(5), resultSet.getInt(4)
+//            ));
+//        }
+//        return studentList;
+//    }
+//
+//    public boolean deleteStudent(String id) throws ClassNotFoundException, SQLException {
+//
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+//        String sql = "DELETE FROM student WHERE student_id = ?";
+//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//        preparedStatement.setString(1, id);
+//
+//        int affectedRowCount = preparedStatement.executeUpdate();
+//
+//        if (affectedRowCount > 0) {
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    public boolean updateStudent(Student student) throws ClassNotFoundException, SQLException {
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+//        String sql = "UPDATE student SET student_name = ?,address = ?, email = ?, age = ? WHERE student_id = ?";
+//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//
+//        preparedStatement.setString(1, student.getStudentName());
+//        preparedStatement.setString(2, student.getAddress());
+//        preparedStatement.setString(3, student.getEmail());
+//        preparedStatement.setInt(4, student.getAge());
+//        preparedStatement.setString(5, student.getStudentId());
+//
+//        int affectedRowCount = preparedStatement.executeUpdate();
+//
+//        if (affectedRowCount > 0) {
+//            return true;
+//        }
+//        return false;
+//    }
 
     //Student Management..........
 
 
-    //User Management..........
+
+    //User Management.........
+
 
     public boolean signUp(User user) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -343,7 +344,34 @@ public class DatabaseAccessCode {
         return registrationList;
     }
 
-
+ //   public List<RegisterDetails> showAllDetails(String courseId, String studentId) throws ClassNotFoundException, SQLException {
+//        String sql = "SELECT s.student_name, s.address, s.age, s.email, r.registered_date, " +
+//                "c.course_name, c.fee, r.paymentType " +
+//                "FROM registration r " +
+//                "JOIN student s ON r.student = s.student_id " +
+//                "JOIN course c ON r.course = c.course_id " +
+//                "WHERE r.course = ? AND r.student = ?";
+//
+//        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+//        preparedStatement.setString(1, courseId);
+//        preparedStatement.setString(2, studentId);
+//
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//        List<RegisterDetails> registrationList = new ArrayList<>();
+//        while (resultSet.next()) {
+//            registrationList.add(new RegisterDetails(
+//                    resultSet.getString(1),
+//                    resultSet.getString(2),
+//                    resultSet.getInt(3),
+//                    resultSet.getString(4),
+//                    resultSet.getDate(5),
+//                    resultSet.getString(6),
+//                    resultSet.getString(7),
+//                    PaymentType.valueOf(resultSet.getString(8))
+//            ));
+//        }
+//        return registrationList;
+//    }
 
     //AllRegistration Management
 
