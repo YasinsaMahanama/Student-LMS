@@ -111,8 +111,27 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public List<Student> findAll() {
-        return Collections.emptyList();
+    public List<Student> findAll() throws SQLException, ClassNotFoundException {
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+
+//        String sql = "SELECT * FROM student";
+//        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+//
+////        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        List<Student> studentList = new ArrayList<>();
+//
+//        while (resultSet.next()) {
+//            studentList.add(new Student(
+//                    resultSet.getString(1), resultSet.getString(2),resultSet.getString(3), resultSet.getString(5), resultSet.getInt(4)
+//            ));
+//        }
+//        return studentList;
+
+        return CrudUtil.execute("SELECT * FROM student");
     }
 
     @Override

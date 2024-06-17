@@ -212,26 +212,26 @@ public class DatabaseAccessCode {
 
     //Registration Management........
 
-    public List<Course> findAllCourse() throws ClassNotFoundException, SQLException {
-
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
-        String sql = "SELECT * FROM course";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        List<Course> courseList = new ArrayList<>();
-
-        while (resultSet.next()) {
-            courseList.add(new Course(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getDouble(3)
-            ));
-        }
-        return courseList;
-    }
+//    public List<Course> findAllCourse() throws ClassNotFoundException, SQLException {
+//
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+//        String sql = "SELECT * FROM course";
+//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        List<Course> courseList = new ArrayList<>();
+//
+//        while (resultSet.next()) {
+//            courseList.add(new Course(
+//                    resultSet.getString(1),
+//                    resultSet.getString(2),
+//                    resultSet.getDouble(3)
+//            ));
+//        }
+//        return courseList;
+//    }
 
 //    public Course findCourse(String courseId) throws ClassNotFoundException, SQLException {
 //
@@ -254,24 +254,24 @@ public class DatabaseAccessCode {
 //        return null;
 //    }
 
-    public List<Student> findAllStudents() throws ClassNotFoundException, SQLException {
-
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
-        String sql = "SELECT * FROM student";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        List<Student> studentList = new ArrayList<>();
-
-        while (resultSet.next()) {
-            studentList.add(new Student(
-                    resultSet.getString(1), resultSet.getString(2),resultSet.getString(3), resultSet.getString(5), resultSet.getInt(4)
-            ));
-        }
-        return studentList;
-    }
+//    public List<Student> findAllStudents() throws ClassNotFoundException, SQLException {
+//
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+//        String sql = "SELECT * FROM student";
+//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        List<Student> studentList = new ArrayList<>();
+//
+//        while (resultSet.next()) {
+//            studentList.add(new Student(
+//                    resultSet.getString(1), resultSet.getString(2),resultSet.getString(3), resultSet.getString(5), resultSet.getInt(4)
+//            ));
+//        }
+//        return studentList;
+//    }
 
 //    public Student findStudent(String studentId) throws ClassNotFoundException, SQLException {
 //

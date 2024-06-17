@@ -104,8 +104,29 @@ public class CourseDaoImpl implements CourseDao {
     }
 
     @Override
-    public List<Course> findAll() {
-        return Collections.emptyList();
+    public List<Course> findAll() throws SQLException, ClassNotFoundException {
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+
+//        String sql = "SELECT * FROM course";
+//        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+//
+////        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        List<Course> courseList = new ArrayList<>();
+//
+//        while (resultSet.next()) {
+//            courseList.add(new Course(
+//                    resultSet.getString(1),
+//                    resultSet.getString(2),
+//                    resultSet.getDouble(3)
+//            ));
+//        }
+//        return courseList;
+
+        return CrudUtil.execute("SELECT * FROM course");
     }
 
     @Override

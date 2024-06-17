@@ -12,6 +12,6 @@ public interface CrudDao<T,ID>{
 
     public T find(ID id) throws ClassNotFoundException, SQLException;
 
-    public List<T> findAll();
+    public List<T> findAll() throws SQLException, ClassNotFoundException;
 
 }
