@@ -233,26 +233,26 @@ public class DatabaseAccessCode {
         return courseList;
     }
 
-    public Course findCourse(String courseId) throws ClassNotFoundException, SQLException {
-
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
-        String sql = "SELECT * FROM course WHERE course_id = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, courseId);
-
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        if (resultSet.next()) {
-            return new Course(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getDouble(3)
-            );
-        }
-
-        return null;
-    }
+//    public Course findCourse(String courseId) throws ClassNotFoundException, SQLException {
+//
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+//        String sql = "SELECT * FROM course WHERE course_id = ?";
+//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//        preparedStatement.setString(1, courseId);
+//
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        if (resultSet.next()) {
+//            return new Course(
+//                    resultSet.getString(1),
+//                    resultSet.getString(2),
+//                    resultSet.getDouble(3)
+//            );
+//        }
+//
+//        return null;
+//    }
 
     public List<Student> findAllStudents() throws ClassNotFoundException, SQLException {
 
@@ -273,51 +273,51 @@ public class DatabaseAccessCode {
         return studentList;
     }
 
-    public Student findStudent(String studentId) throws ClassNotFoundException, SQLException {
+//    public Student findStudent(String studentId) throws ClassNotFoundException, SQLException {
+//
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+//        String sql = "SELECT * FROM student WHERE student_id = ?";
+//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//        preparedStatement.setString(1, studentId);
+//
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        if (resultSet.next()) {
+//            return new Student(
+//                    resultSet.getString(1), resultSet.getString(2),
+//                    resultSet.getString(3), resultSet.getString(5),
+//                    resultSet.getInt(4)
+//            );
+//        }
+//
+//        return null;
+//    }
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
-        String sql = "SELECT * FROM student WHERE student_id = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, studentId);
-
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        if (resultSet.next()) {
-            return new Student(
-                    resultSet.getString(1), resultSet.getString(2),
-                    resultSet.getString(3), resultSet.getString(5),
-                    resultSet.getInt(4)
-            );
-        }
-
-        return null;
-    }
-
-    public boolean registerCourse(Registration registration) throws ClassNotFoundException, SQLException {
-       // Class.forName("com.mysql.cj.jdbc.Driver");
-        //Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
-
-
-        String sql = "INSERT INTO registration values(?,?,?,?,?,?)";
-
-        //PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
-
-        preparedStatement.setString(1, registration.getRegistrationId());
-        preparedStatement.setObject(2, registration.getRegisteredDate());
-        preparedStatement.setObject(3, registration.getNic());
-        preparedStatement.setString(4, registration.getPaymentType().name());
-        preparedStatement.setString(5, registration.getStudent());
-        preparedStatement.setString(6, registration.getCourse());
-
-        return preparedStatement.executeUpdate()>0;
-
-        //me code eka simple krla thyenne anith ewa simple krla na. connection eka wenama class ekaka hdgena mekta aragen.
-        //if dala anith ewage ghpu eka meke return dala thani peliykta aragena
-
-    }
+//    public boolean registerCourse(Registration registration) throws ClassNotFoundException, SQLException {
+//       // Class.forName("com.mysql.cj.jdbc.Driver");
+//        //Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+//
+//
+//        String sql = "INSERT INTO registration values(?,?,?,?,?,?)";
+//
+//        //PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//
+//        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+//
+//        preparedStatement.setString(1, registration.getRegistrationId());
+//        preparedStatement.setObject(2, registration.getRegisteredDate());
+//        preparedStatement.setObject(3, registration.getNic());
+//        preparedStatement.setString(4, registration.getPaymentType().name());
+//        preparedStatement.setString(5, registration.getStudent());
+//        preparedStatement.setString(6, registration.getCourse());
+//
+//        return preparedStatement.executeUpdate()>0;
+//
+//        //me code eka simple krla thyenne anith ewa simple krla na. connection eka wenama class ekaka hdgena mekta aragen.
+//        //if dala anith ewage ghpu eka meke return dala thani peliykta aragena
+//
+//    }
 
     //Registration Management........
 
