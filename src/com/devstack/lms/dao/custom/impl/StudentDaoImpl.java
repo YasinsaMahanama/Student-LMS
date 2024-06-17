@@ -1,6 +1,8 @@
 package com.devstack.lms.dao.custom.impl;
 
+import com.devstack.lms.dao.CrudUtil;
 import com.devstack.lms.dao.custom.StudentDao;
+import com.devstack.lms.db.DbConnection;
 import com.devstack.lms.entity.Student;
 
 import java.sql.*;
@@ -11,31 +13,39 @@ import java.util.List;
 public class StudentDaoImpl implements StudentDao {
     @Override
     public boolean create(Student student) throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
-        String sql = "INSERT INTO student values(?,?,?,?,?)";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, student.getStudentId());
-        preparedStatement.setString(2, student.getStudentName());
-        preparedStatement.setString(3, student.getAddress());
-        preparedStatement.setInt(4, student.getAge());
-        preparedStatement.setString(5, student.getEmail());
+        //Class.forName("com.mysql.cj.jdbc.Driver");
+        //Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
 
-        int affectedRowCount = preparedStatement.executeUpdate();
+//        String sql = "INSERT INTO student values(?,?,?,?,?)";
+//        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+//
+//        //PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//        preparedStatement.setString(1, student.getStudentId());
+//        preparedStatement.setString(2, student.getStudentName());
+//        preparedStatement.setString(3, student.getAddress());
+//        preparedStatement.setInt(4, student.getAge());
+//        preparedStatement.setString(5, student.getEmail());
+//
+//        int affectedRowCount = preparedStatement.executeUpdate();
+//
+//        if (affectedRowCount > 0) {
+//            return true;
+//        }
+//        return false;
+        return CrudUtil.execute("INSERT INTO student values(?,?,?,?,?)", student.getStudentId(),student.getStudentName(),student.getAddress(),student.getAge(), student.getEmail());
 
-        if (affectedRowCount > 0) {
-            return true;
-        }
-        return false;
     }
 
 
     @Override
     public boolean update(Student student) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+
         String sql = "UPDATE student SET student_name = ?,address = ?, email = ?, age = ? WHERE student_id = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
         preparedStatement.setString(1, student.getStudentName());
         preparedStatement.setString(2, student.getAddress());
@@ -53,10 +63,14 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public boolean delete(String id) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devstack_lms", "root", "1234");
         String sql = "DELETE FROM student WHERE student_id = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
         preparedStatement.setString(1, id);
 
         int affectedRowCount = preparedStatement.executeUpdate();
