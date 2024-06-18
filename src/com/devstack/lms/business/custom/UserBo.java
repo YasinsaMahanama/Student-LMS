@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface UserBo {
     public boolean create(UserDto dto) throws SQLException, ClassNotFoundException;
-
 }
