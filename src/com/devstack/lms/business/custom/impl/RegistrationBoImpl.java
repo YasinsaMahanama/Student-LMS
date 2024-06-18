@@ -19,7 +19,7 @@ public class RegistrationBoImpl implements RegistrationBo {
     }
 
     @Override
-    public boolean delete(RegistrationDto dto) throws ClassNotFoundException, SQLException {
+    public boolean delete(String id) throws ClassNotFoundException, SQLException {
         return false;
     }
 

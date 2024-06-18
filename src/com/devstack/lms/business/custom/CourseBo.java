@@ -10,7 +10,7 @@ public interface CourseBo {
 
     public boolean update(com.devstack.lms.dto.CourseDto dto) throws ClassNotFoundException, SQLException;
 
-    public boolean delete(com.devstack.lms.dto.CourseDto dto) throws ClassNotFoundException, SQLException;
+    boolean delete(String id) throws ClassNotFoundException, SQLException;
 
     public com.devstack.lms.dto.CourseDto find(String id) throws ClassNotFoundException, SQLException;
 

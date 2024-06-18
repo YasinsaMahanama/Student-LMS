@@ -1,11 +1,13 @@
 package com.devstack.lms.dto;
 
+import com.devstack.lms.entity.Course;
+
 public class CourseDto {
     private String courseId;
     private String courseName;
     private double courseFee;
 
-    public CourseDto() {
+    public CourseDto(Course course) {
     }
 
     public CourseDto(String courseId, String courseName, double courseFee) {

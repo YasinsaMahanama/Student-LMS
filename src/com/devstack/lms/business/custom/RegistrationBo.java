@@ -10,7 +10,7 @@ public interface RegistrationBo {
 
     public boolean update(RegistrationDto dto) throws ClassNotFoundException, SQLException;
 
-    public boolean delete(RegistrationDto dto) throws ClassNotFoundException, SQLException;
+    boolean delete(String id) throws ClassNotFoundException, SQLException;
 
     public RegistrationDto find(String id) throws ClassNotFoundException, SQLException;
 
