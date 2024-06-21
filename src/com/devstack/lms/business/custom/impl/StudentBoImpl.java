@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 public class StudentBoImpl implements StudentBo {
 
-
     private final  StudentDao studentDao = (StudentDao) DaoFactory.getDao(DaoFactory.DaoType.STUDENT);
 
     @Override

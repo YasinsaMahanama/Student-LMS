@@ -11,6 +11,7 @@ import java.util.List;
 
 public class RegistrationBoImpl implements RegistrationBo {
 
+
     private final RegistrationDao registrationDao = (RegistrationDao) DaoFactory.getDao(DaoFactory.DaoType.REGISTRATION);
 
     @Override
@@ -22,6 +23,7 @@ public class RegistrationBoImpl implements RegistrationBo {
     public boolean update(RegistrationDto dto) throws ClassNotFoundException, SQLException {
         return false;
     }
+
 
     @Override
     public boolean delete(String id) throws ClassNotFoundException, SQLException {
