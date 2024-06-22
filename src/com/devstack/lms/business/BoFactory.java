@@ -1,16 +1,15 @@
-package com.devstack.lms.dao;
+package com.devstack.lms.business;
 
-import com.devstack.lms.dao.custom.CourseDao;
 import com.devstack.lms.dao.custom.impl.CourseDaoImpl;
 import com.devstack.lms.dao.custom.impl.RegistrationDaoImpl;
 import com.devstack.lms.dao.custom.impl.StudentDaoImpl;
 import com.devstack.lms.dao.custom.impl.UserDaoImpl;
 
-public class DaoFactory {
-    private DaoFactory daoFactory;
-    private DaoFactory(){}
+public class BoFactory {
+    private BoFactory boFactory;
+    private BoFactory(){}
 
-    public  enum DaoType{
+    public  enum BoType{
         COURSE,REGISTRATION,STUDENT,USER
     }
 
@@ -29,8 +28,8 @@ public class DaoFactory {
 //        }
 //    }
 
-    public static <T> T getDao(DaoType daoType){
-        switch (daoType){
+    public static <T> T getBo(BoFactory.BoType boType){
+        switch (boType){
             case COURSE:
                 return (T) new CourseDaoImpl();
             case REGISTRATION:
